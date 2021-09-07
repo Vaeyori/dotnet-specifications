@@ -72,9 +72,9 @@ namespace Vaeyori.Specifications.Abstractions.UnitTests
         }
 
         [Fact]
-        public void AndSpecification_ToExpression_SuccessfullyCreatesExpressionWithAllSpecification()
+        public void AndSpecification_ToExpression_SuccessfullyCreatesExpressionWithAnySpecification()
         {
-            var specification = new IsTestClassTestedSpecification().And(Specification<TestClass>.All);
+            var specification = new IsTestClassTestedSpecification().And(Specification<TestClass>.Any);
 
             Assert.NotNull(specification.ToExpression());
             Assert.True(specification.ToExpression().Compile()(new TestClass(true, true)));
@@ -92,9 +92,9 @@ namespace Vaeyori.Specifications.Abstractions.UnitTests
         }
 
         [Fact]
-        public void OrSpecification_ToExpression_SuccessfullyCreatesExpressionWithAllSpecification()
+        public void OrSpecification_ToExpression_SuccessfullyCreatesExpressionWithAnySpecification()
         {
-            var specification = new IsTestClassTestedSpecification().Or(Specification<TestClass>.All);
+            var specification = new IsTestClassTestedSpecification().Or(Specification<TestClass>.Any);
 
             Assert.NotNull(specification.ToExpression());
             Assert.True(specification.ToExpression().Compile()(new TestClass(true, true)));
@@ -111,25 +111,25 @@ namespace Vaeyori.Specifications.Abstractions.UnitTests
         }
 
         [Fact]
-        public void AllSpecification_ToExpression_SuccessfullyCreatesExpression()
+        public void AnySpecification_ToExpression_SuccessfullyCreatesExpression()
         {
-            Expression<Func<TestClass, bool>> specification = Specification<TestClass>.All;
+            Expression<Func<TestClass, bool>> specification = Specification<TestClass>.Any;
 
             Assert.True(specification.Compile()(new TestClass(true, true)));
         }
 
         [Fact]
-        public void AllSpecification_ToExpression_SuccessfullyCreatesExpressionWithAndSpecification()
+        public void AnySpecification_ToExpression_SuccessfullyCreatesExpressionWithAndSpecification()
         {
-            Expression<Func<TestClass, bool>> specification = Specification<TestClass>.All.And(new IsTestClassTested2Specification());
+            Expression<Func<TestClass, bool>> specification = Specification<TestClass>.Any.And(new IsTestClassTested2Specification());
 
             Assert.True(specification.Compile()(new TestClass(true, true)));
         }
 
         [Fact]
-        public void AllSpecification_ToExpression_SuccessfullyCreatesExpressionWithOrSpecification()
+        public void AnySpecification_ToExpression_SuccessfullyCreatesExpressionWithOrSpecification()
         {
-            Expression<Func<TestClass, bool>> specification = Specification<TestClass>.All.Or(new IsTestClassTested2Specification());
+            Expression<Func<TestClass, bool>> specification = Specification<TestClass>.Any.Or(new IsTestClassTested2Specification());
 
             Assert.True(specification.Compile()(new TestClass(true, true)));
         }

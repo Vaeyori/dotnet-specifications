@@ -20,7 +20,7 @@ namespace Vaeyori.Specifications.Abstractions.Internals
     using System;
     using System.Linq.Expressions;
 
-    internal sealed class AllSpecification<T> : Specification<T>
+    internal sealed class AnySpecification<T> : Specification<T>
     {
         public override Expression<Func<T, bool>> ToExpression()
         {

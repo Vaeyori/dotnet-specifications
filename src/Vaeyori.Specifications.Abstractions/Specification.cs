@@ -23,7 +23,7 @@ namespace Vaeyori.Specifications.Abstractions
 
     public abstract class Specification<T>
     {
-        public static readonly Specification<T> All = new AllSpecification<T>();
+        public static readonly Specification<T> Any = new AnySpecification<T>();
 
         public abstract Expression<Func<T, bool>> ToExpression();
 

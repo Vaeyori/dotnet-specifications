@@ -23,9 +23,9 @@ namespace Vaeyori.Specifications.Abstractions
     {
         public static Specification<T> And<T>(this Specification<T> specification, Specification<T> andSpecification)
         {
-            if (specification.Equals(Specification<T>.All))
+            if (specification.Equals(Specification<T>.Any))
                 return andSpecification;
-            if (andSpecification.Equals(Specification<T>.All))
+            if (andSpecification.Equals(Specification<T>.Any))
                 return specification;
 
             return new AndSpecification<T>(specification, andSpecification);
@@ -33,8 +33,8 @@ namespace Vaeyori.Specifications.Abstractions
 
         public static Specification<T> Or<T>(this Specification<T> specification, Specification<T> orSpecification)
         {
-            if (specification.Equals(Specification<T>.All) || orSpecification.Equals(Specification<T>.All))
-                return Specification<T>.All;
+            if (specification.Equals(Specification<T>.Any) || orSpecification.Equals(Specification<T>.Any))
+                return Specification<T>.Any;
 
 
             return new OrSpecification<T>(specification, orSpecification);
