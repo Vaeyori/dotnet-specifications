@@ -18,7 +18,7 @@
 
 Install via Package Manager
 
-    Install-Package Vaeyori.Messaging.Outbox
+    Install-Package Vaeyori.Specifiations.Abstractions
 
 ## Contribute
 
